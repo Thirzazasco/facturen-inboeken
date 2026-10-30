@@ -1,0 +1,107 @@
+:root {
+  --bg: #f7f7f5;
+  --vlak: #ffffff;
+  --tekst: #1f2328;
+  --stil: #6b6f76;
+  --rand: #e2e2de;
+  --accent: #1f6feb;
+  --rood: #c62828;
+  --groen: #2e7d32;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: var(--tekst);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181c;
+    --vlak: #1f2228;
+    --tekst: #e6e6e3;
+    --stil: #9aa0a6;
+    --rand: #33373e;
+    --accent: #4c8dff;
+    --rood: #ef5350;
+    --groen: #66bb6a;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h2 { margin: 0 0 4px; }
+h3 { margin: 20px 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--stil); }
+
+header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 10px 20px; background: var(--vlak); border-bottom: 1px solid var(--rand);
+}
+header nav { display: flex; gap: 12px; flex: 1; }
+header nav a.active { font-weight: 600; text-decoration: underline; }
+main { padding: 20px; }
+
+button {
+  font: inherit; padding: 6px 12px; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--rand); background: var(--vlak); color: var(--tekst);
+}
+button:disabled { opacity: .5; cursor: default; }
+button.primair { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.breed { width: 100%; }
+input, select {
+  font: inherit; padding: 6px 8px; border-radius: 6px; width: 100%;
+  border: 1px solid var(--rand); background: var(--vlak); color: var(--tekst);
+}
+input:disabled, select:disabled { background: transparent; }
+label { display: flex; flex-direction: column; gap: 4px; color: var(--stil); font-size: 12px; }
+
+.stil { color: var(--stil); }
+.fout { color: var(--rood); }
+.ok { color: var(--groen); }
+.midden { text-align: center; margin-top: 20vh; }
+.getal { text-align: right; font-variant-numeric: tabular-nums; }
+.label {
+  display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 10px;
+  font-size: 11px; font-weight: 500; background: var(--rand); color: var(--tekst); vertical-align: middle;
+}
+.label.rood { background: var(--rood); color: #fff; }
+
+.stip { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+.stip.groen { background: var(--groen); }
+.stip.rood { background: var(--rood); }
+.stip.grijs { background: var(--rand); }
+
+.login { max-width: 360px; margin: 12vh auto; padding: 24px; background: var(--vlak); border: 1px solid var(--rand); border-radius: 10px; }
+.login form { display: flex; flex-direction: column; gap: 10px; }
+.of { text-align: center; color: var(--stil); margin: 14px 0; }
+
+.balk { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.balk input { max-width: 300px; }
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+.tabs button.actief { background: var(--tekst); color: var(--bg); }
+
+table { border-collapse: collapse; width: 100%; background: var(--vlak); }
+th, td { padding: 6px 8px; border-bottom: 1px solid var(--rand); text-align: left; }
+th { font-size: 12px; color: var(--stil); font-weight: 500; }
+table.lijst tbody tr:hover { background: var(--bg); }
+table.regels td { padding: 3px 4px; }
+table.regels tfoot td { font-weight: 600; }
+
+.beoordelen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; height: calc(100vh - 90px); }
+.pdf { background: var(--vlak); border: 1px solid var(--rand); border-radius: 8px; overflow: hidden; }
+.pdf iframe { width: 100%; height: 100%; border: 0; }
+.pdf p { padding: 20px; }
+.velden { overflow-y: auto; padding-right: 4px; }
+.raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.controles { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.knoppen { display: flex; gap: 8px; margin: 20px 0; flex-wrap: wrap; position: sticky; bottom: 0; background: var(--bg); padding: 10px 0; }
+
+.tegels { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; margin: 16px 0; }
+.tegel { background: var(--vlak); border: 1px solid var(--rand); border-radius: 8px; padding: 14px; }
+.tegel .groot { font-size: 26px; font-weight: 600; margin-top: 4px; }
+
+@media (max-width: 900px) {
+  .beoordelen { grid-template-columns: 1fr; height: auto; }
+  .pdf { height: 70vh; }
+  header { flex-wrap: wrap; }
+}
