@@ -48,11 +48,12 @@ button {
 button:disabled { opacity: .5; cursor: default; }
 button.primair { background: var(--accent); border-color: var(--accent); color: #fff; }
 button.breed { width: 100%; }
-input, select {
+input, select, textarea {
   font: inherit; padding: 6px 8px; border-radius: 6px; width: 100%;
   border: 1px solid var(--rand); background: var(--vlak); color: var(--tekst);
 }
-input:disabled, select:disabled { background: transparent; }
+input:disabled, select:disabled, textarea:disabled { background: transparent; }
+textarea { resize: vertical; }
 label { display: flex; flex-direction: column; gap: 4px; color: var(--stil); font-size: 12px; }
 
 .stil { color: var(--stil); }

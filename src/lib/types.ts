@@ -40,6 +40,12 @@ export interface Factuur {
   totaal_incl: number | null
   zekerheid: number | null
   uitgelezen_met: string | null
+  omschrijving: string | null
+  betalingsconditie: string | null
+  betalingswijze: string | null
+  pakbonnummer: string | null
+  inkoopordernummer: string | null
+  opmerking: string | null
   bc_crediteur_nr: string | null
   bc_document_nr: string | null
   bc_fout: string | null

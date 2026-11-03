@@ -17,6 +17,11 @@ const KOPVELDEN: { key: keyof Factuur; label: string; type?: string }[] = [
   { key: 'totaal_excl', label: 'Totaal excl.', type: 'number' },
   { key: 'totaal_btw', label: 'Btw', type: 'number' },
   { key: 'totaal_incl', label: 'Totaal incl.', type: 'number' },
+  { key: 'omschrijving', label: 'Omschrijving' },
+  { key: 'inkoopordernummer', label: 'Inkoopordernummer' },
+  { key: 'pakbonnummer', label: 'Pakbonnummer' },
+  { key: 'betalingsconditie', label: 'Betalingsconditie' },
+  { key: 'betalingswijze', label: 'Betalingswijze' },
 ]
 
 export default function Beoordelen() {
@@ -97,7 +102,7 @@ export default function Beoordelen() {
     setFout(null)
     const { id: fid, ...rest } = factuur
     const velden = Object.fromEntries(
-      [...KOPVELDEN.map((k) => k.key), 'bc_crediteur_nr'].map((k) => [k, rest[k as keyof typeof rest]]),
+      [...KOPVELDEN.map((k) => k.key), 'bc_crediteur_nr', 'opmerking'].map((k) => [k, rest[k as keyof typeof rest]]),
     )
     const { error } = await db().from('facturen').update(velden).eq('id', fid)
     if (error) {
@@ -211,6 +216,16 @@ export default function Beoordelen() {
             </label>
           ))}
         </div>
+
+        <label>
+          Opmerking
+          <textarea
+            rows={3}
+            disabled={!bewerkbaar}
+            value={factuur.opmerking ?? ''}
+            onChange={(e) => zetVeld('opmerking', e.target.value)}
+          />
+        </label>
 
         <h3>Regels</h3>
         <table className="regels">
